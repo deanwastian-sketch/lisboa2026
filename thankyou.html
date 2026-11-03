@@ -1,1 +1,40 @@
-<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lisboa 2026 · Obrigado</title><style>body{margin:0;min-height:100svh;display:grid;place-items:center;text-align:center;font-family:Arial,sans-serif;color:#fff;background:linear-gradient(#06211f9f,#06211fe8),url('lisboa.jpg') center/cover}main{padding:28px}.flag{font-size:38px}h1{font-size:48px;margin:10px}.gold{color:#f4cf67;font-weight:bold;letter-spacing:.18em}.note{margin-top:25px;color:#d8e3df}</style></head><body><main><div class="flag">🇵🇹</div><div class="gold">CITY BREAK</div><h1>LISBOA 2026</h1><p>16.–19. november 2026</p><p class="note">Obrigado Lisboa! ❤️<br>Fotografije dodamo po potovanju.</p></main></body></html>
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102f2b">
+<title>Lisboa 2026 · Obrigado</title>
+<style>
+:root{--green:#102f2b;--gold:#e0b43d;--cream:#f3eee4;--soft:#dbe7e3}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--green);color:#fff}
+.hero{position:relative;min-height:100svh;display:flex;justify-content:center;background:url('lisboa.jpg') center 58%/cover no-repeat}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,22,22,.48),rgba(4,22,22,.30) 38%,rgba(4,22,22,.72) 72%,rgba(4,22,22,.93))}
+.page{position:relative;z-index:1;width:min(100%,560px);min-height:100svh;padding:max(28px,env(safe-area-inset-top)) 20px max(26px,env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:center;text-align:center}
+.flag{font-size:31px}.eyebrow{margin-top:9px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.32em;text-transform:uppercase}
+h1{margin:9px 0 0;font-size:clamp(52px,17vw,84px);letter-spacing:-.055em;line-height:.9;text-shadow:0 4px 22px #0008}.year{margin-top:10px;font-size:18px;font-weight:900;letter-spacing:.66em;padding-left:.66em}.date{margin-top:17px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.rule{width:58px;height:2px;background:var(--gold);margin:20px auto}
+.panel{margin-top:28px;padding:24px 17px 21px;border:1px solid #ffffff48;border-radius:28px;background:#082523a8;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 18px 48px #0006}.thanks{font-family:Georgia,serif;font-size:28px;font-style:italic;margin:0;color:#fff}.stats{margin:16px auto 0;max-width:390px;font-size:11px;line-height:1.7;color:var(--soft);letter-spacing:.045em}.photo{margin-top:21px;display:block;width:100%;padding:15px 18px;border-radius:18px;border:1px solid #e0b43d80;background:#e0b43d18;color:#f6d875;text-decoration:none;font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.photo.disabled{cursor:default;opacity:.82}.hint{margin-top:9px;font-size:9px;color:#b8c9c4;letter-spacing:.07em}.closing{margin-top:22px;font-size:12px;line-height:1.55;color:#e5eeeb}.closing b{color:var(--gold)}
+@media(max-height:690px){.page{justify-content:flex-start;padding-top:22px}.panel{margin-top:20px}.thanks{font-size:24px}}
+</style>
+</head>
+<body>
+<main class="hero"><div class="shade"></div><section class="page">
+<div class="flag">🇵🇹</div><div class="eyebrow">City Break</div><h1>LISBONA</h1><div class="year">2026</div><div class="date">16.–19. november 2026</div><div class="rule"></div>
+<div class="panel"><p class="thanks">Obrigado, Lisboa! ❤️</p><div class="stats">4 dni · 7 potnikov · nešteto korakov<br>nekaj pastelov de nata · kakšna ginjinha<br>in zelo vprašljivo znanje portugalščine 😄</div>
+<a id="photos" class="photo disabled" href="#" aria-disabled="true">📸 Fotografije kmalu</a><div class="hint">Ko bo album pripravljen, se bo odprl tukaj.</div>
+<div class="closing">Potovanja je konec, kartica pa ostane.<br><b>Za naslednji pogled nazaj samo ponovno skeniraj QR.</b></div></div>
+</section></main>
+<script>
+// Po potovanju tukaj zamenjaj prazen niz z URL-jem skupnega Google Photos albuma.
+const PHOTO_ALBUM_URL = '';
+const photos = document.getElementById('photos');
+if (PHOTO_ALBUM_URL) {
+  photos.href = PHOTO_ALBUM_URL;
+  photos.textContent = '📸 Naše fotografije';
+  photos.classList.remove('disabled');
+  photos.removeAttribute('aria-disabled');
+} else {
+  photos.addEventListener('click', e => e.preventDefault());
+}
+</script>
+</body></html>
