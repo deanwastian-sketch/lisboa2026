@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102f2b">
+<title>Lisboa 2026 · Test preklopov</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100svh;background:#102f2b;color:#fff;font-family:Arial,Helvetica,sans-serif}.wrap{width:min(100%,560px);margin:auto;padding:28px 18px 40px}.flag{text-align:center;font-size:30px}.eyebrow{text-align:center;margin-top:8px;color:#f4cf67;font-size:10px;font-weight:900;letter-spacing:.28em;text-transform:uppercase}h1{text-align:center;margin:8px 0 5px;font-size:38px}.intro{text-align:center;margin:0 auto 24px;color:#cbdad6;font-size:12px;line-height:1.5;max-width:430px}.card{background:#fff;color:#183b36;border-radius:24px;padding:18px;box-shadow:0 16px 40px #0004}.row{display:grid;grid-template-columns:104px 1fr auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid #e5ece9}.row:last-child{border-bottom:0}.date{font-weight:900;font-size:12px}.page{font-size:12px;color:#617773}.btn{border:0;border-radius:12px;background:#1f7668;color:#fff;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:9px 10px;cursor:pointer}.btn:hover{background:#175d53}.test{margin-top:18px;background:#082523;border:1px solid #ffffff38;border-radius:22px;padding:17px}.test label{display:block;color:#f4cf67;font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px}.testline{display:flex;gap:8px}.test input{min-width:0;flex:1;border-radius:12px;border:1px solid #ffffff3e;background:#ffffff12;color:#fff;padding:11px}.test button{border:0;border-radius:12px;background:#e0b43d;color:#173f38;font-weight:900;padding:0 13px}.result{margin-top:12px;color:#dbe7e3;font-size:12px;line-height:1.5}.warn{margin-top:18px;text-align:center;color:#94aaa4;font-size:10px;line-height:1.5}
+</style>
+</head>
+<body><main class="wrap"><div class="flag">🇵🇹</div><div class="eyebrow">Lisboa 2026</div><h1>TEST PREKLOPOV</h1><p class="intro">Ta stran ne vpliva na pravi QR ali produkcijski index. Z gumbi lahko odpreš vsako fazo projekta in preveriš, kaj bi potnik videl.</p>
+<section class="card">
+<div class="row"><div class="date">13. 11. 23:59</div><div class="page">countdown.html</div><button class="btn" data-page="countdown.html">Odpri</button></div>
+<div class="row"><div class="date">14. 11. 00:00</div><div class="page">before.html</div><button class="btn" data-page="before.html">Odpri</button></div>
+<div class="row"><div class="date">16. 11. 00:00</div><div class="page">d1.html</div><button class="btn" data-page="d1.html">Odpri</button></div>
+<div class="row"><div class="date">17. 11. 00:00</div><div class="page">d2.html</div><button class="btn" data-page="d2.html">Odpri</button></div>
+<div class="row"><div class="date">18. 11. 00:00</div><div class="page">d3.html</div><button class="btn" data-page="d3.html">Odpri</button></div>
+<div class="row"><div class="date">19. 11. 00:00</div><div class="page">d4.html</div><button class="btn" data-page="d4.html">Odpri</button></div>
+<div class="row"><div class="date">20. 11. 00:00</div><div class="page">thankyou.html</div><button class="btn" data-page="thankyou.html">Odpri</button></div>
+</section>
+<section class="test"><label for="testDate">Simuliraj poljuben datum in čas</label><div class="testline"><input id="testDate" type="datetime-local" value="2026-11-14T00:00"><button id="run" type="button">Preveri</button></div><div class="result" id="result" aria-live="polite">Izberi datum in klikni Preveri.</div></section>
+<div class="warn">Testna stran samo preverja isto časovno logiko. Pravi <b>index.html</b> še naprej uporablja dejanski datum in čas telefona.</div>
+</main>
+<script>
+const boundaries={before:new Date(2026,10,14,0,0,0),d1:new Date(2026,10,16,0,0,0),d2:new Date(2026,10,17,0,0,0),d3:new Date(2026,10,18,0,0,0),d4:new Date(2026,10,19,0,0,0),thanks:new Date(2026,10,20,0,0,0)};
+function pick(now){if(now>=boundaries.thanks)return'thankyou.html';if(now>=boundaries.d4)return'd4.html';if(now>=boundaries.d3)return'd3.html';if(now>=boundaries.d2)return'd2.html';if(now>=boundaries.d1)return'd1.html';if(now>=boundaries.before)return'before.html';return'countdown.html'}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>location.href=b.dataset.page));
+document.getElementById('run').addEventListener('click',()=>{const raw=document.getElementById('testDate').value;if(!raw){document.getElementById('result').textContent='Najprej izberi datum in čas.';return}const dt=new Date(raw);const page=pick(dt);document.getElementById('result').innerHTML='Za <b>'+dt.toLocaleString('sl-SI')+'</b> bi index odprl <b>'+page+'</b>. <button type="button" id="openResult" class="btn" style="margin-left:6px">Odpri</button>';document.getElementById('openResult').addEventListener('click',()=>location.href=page)});
+</script></body></html>
